@@ -83,6 +83,13 @@ def find_string_with_path(matrix, target_string):
                                       
     """
 
+    # Return None for empty matrix
+    if not matrix or not matrix[0]:
+        return None
+    # Return empty path for empty string
+    if not target_string:
+        return []
+
     # First, get the positions of all characters in the target string
     char_positions = {char: get_char_positions_in_matrix(matrix, char) for char in set(target_string)}
     # If any character in the target string is not found or there are less occurrences than in the searched string, return None
@@ -109,7 +116,7 @@ def find_string_with_path(matrix, target_string):
             visited = set()
             current = start
             idx = start_index
-            while current and current not in visited and idx >= 0:
+            while current and current not in visited and idx > 0:
                 visited.add(current)
                 # Get the valid moves from the current position
                 for direction in get_valid_moves(matrix, current[0], current[1]):
@@ -120,8 +127,9 @@ def find_string_with_path(matrix, target_string):
                         break
                 else:
                     break
-            # Do the same for the successor characters but first remove the start position from visited
-            visited.remove(start)
+            # Do the same for the successor characters but first remove the start position from visited if existent
+            if start in visited:
+                visited.remove(start)
             current = start
             idx = start_index
             while current and current not in visited and idx < len(target_string) - 1:
