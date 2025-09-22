@@ -1,0 +1,9 @@
+/.github
+/.pytest_cache
+/.venv
+/.vscode
+/__pycache__
+/launch.json
+/node_modules
+/package-lock.json
+/package.json

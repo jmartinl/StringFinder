@@ -1,0 +1,13 @@
+# Requirements file for String Finder project
+
+# Testing framework
+pytest>=7.0.0
+
+# Optional: For better test output formatting
+pytest-cov>=4.0.0
+
+# Optional: For code formatting (if you want to format your code)
+black>=22.0.0
+
+# Optional: For type checking
+mypy>=1.0.0
