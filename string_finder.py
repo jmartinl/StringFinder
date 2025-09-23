@@ -121,7 +121,7 @@ def find_string_with_path(matrix, target_string):
                 # Get the valid moves from the current position
                 for direction in get_valid_moves(matrix, current[0], current[1]):
                     if direction in char_positions.get(target_string[idx - 1], []):
-                        path[start_index - 1] = direction
+                        path[idx - 1] = direction
                         current = direction
                         idx -= 1
                         break
