@@ -28,7 +28,7 @@ LARGE_MATRIX = [
     ['Q', 'W', 'E', 'R', 'T', 'Y'],
     ['A', 'S', 'D', 'F', 'G', 'H'],
     ['Z', 'X', 'C', 'V', 'B', 'N'],
-    ['M', 'L', 'K', 'J', 'I', 'O'],
+    ['X', 'L', 'K', 'J', 'I', 'O'],
     ['P', 'U', 'Q', 'W', 'E', 'R']
 ]
 
@@ -57,18 +57,25 @@ TEST_CASES = [
     ("REPEAT_MATRIX", "ABAB", True, "Longer alternating pattern"),
     
     ("LARGE_MATRIX", "QWERTY", True, "Full first row"),
-    ("LARGE_MATRIX", "QAZMPL", True, "Full first column"),
+    ("LARGE_MATRIX", "QAZXP", True, "Full first column"),
     ("LARGE_MATRIX", "ASDF", True, "Partial second row"),
 ]
-
 # Edge case matrices
-EDGE_CASES = {
-    "SINGLE_CHAR": [['A']],
-    "SINGLE_ROW": [['A', 'B', 'C', 'D', 'E']],
-    "SINGLE_COL": [['A'], ['B'], ['C'], ['D'], ['E']],
-    "EMPTY": [],
-    "EMPTY_ROW": [[]],
-}
+SINGLE_CHAR = [['A']]
+
+SINGLE_ROW = [['A', 'B', 'C', 'D', 'E']]
+
+SINGLE_COL = [
+    ['A'],
+    ['B'],
+    ['C'],
+    ['D'],
+    ['E']
+]
+
+EMPTY = []
+
+EMPTY_ROW = [[]]
 
 # Edge case test scenarios
 EDGE_CASE_TESTS = [
