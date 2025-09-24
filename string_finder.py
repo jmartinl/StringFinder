@@ -135,13 +135,20 @@ def find_string_with_path(matrix, target_string):
             while current and current not in visited and idx < len(target_string) - 1:
                 visited.add(current)
                 for direction in get_valid_moves(matrix, current[0], current[1]):
-                    if direction in char_positions.get(target_string[idx + 1], []):
+                    if direction in char_positions.get(target_string[idx + 1], []) and direction not in visited:
                         path[idx + 1] = direction
                         current = direction
                         idx += 1
                         break
                 else:
-                    break
+                    # Go back to the previous position and remove the current from the path and the previous from the visited set
+                    if idx > start_index:
+                        path[idx] = None
+                        idx -= 1
+                        current = path[idx]
+                        visited.remove(current)
+                    else:
+                        break
             # If the length of the path matches the length of the target string and there are no None values, return the path
             if len(path) == len(target_string) and all(pos is not None for pos in path):
                 return path
@@ -203,4 +210,9 @@ if __name__ == "__main__":
     
     # Test your implementation
     result = find_string_with_path(sample_matrix, "HELLO")
+    assert result is not None, "String 'HELLO' should be found in the matrix"
     print(f"Found 'HELLO': {result}")
+
+    result = find_string_with_path(sample_matrix, "HWPN")
+    assert result is not None, "String 'HWPN' should be found in the matrix"
+    print(f"Found 'HWPN': {result}")

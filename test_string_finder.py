@@ -238,8 +238,10 @@ if __name__ == "__main__":
     print("Running basic tests...")
     for matrix_name, search_string, expected in SAMPLE_SEARCHES:
         matrix = SAMPLE_MATRICES[matrix_name]
-        # Note: These will fail until you implement the algorithm
         print(f"Matrix: {matrix_name}, Search: '{search_string}', Expected: {expected}")
+        result = find_string_in_matrix(matrix, search_string)
+        print(f"Result: {result}")
+        assert result == expected, f"Test failed for {matrix_name} with string '{search_string}'"
     
     print("\nTo run full test suite, use: pytest test_string_finder.py")
     print("To run with verbose output: pytest -v test_string_finder.py")
